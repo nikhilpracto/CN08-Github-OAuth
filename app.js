@@ -4,7 +4,7 @@ const passport = require('passport');
 const cookieSession = require('cookie-session');
 const port = 3000;
 const app = express();
-const isLoggedIn = require('./Middleware/auth')
+const isLoggedIn = require('./Middleware/auth');
 require('./passport')
 
 app.use(cookieSession({
@@ -16,7 +16,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('/', isLoggedIn, (req, res) => {
-    res.send(`Hello World ${req.user?.displayName}`);
+    res.send(`Hello World ${req.user.displayName}`);
 })
 
 app.get('/activity', isLoggedIn, (req, res) => {
@@ -28,16 +28,22 @@ app.get('/activity', isLoggedIn, (req, res) => {
             'User-Agent': ''
         }
     }
-    https.get(options, function(apiResponse){
+    https.get(options, function (apiResponse) {
         apiResponse.pipe(res);
-    }).on('error', (e)=>{
+    }).on('error', (e) => {
         res.status(500).send('Something went wrong!');
     })
 })
 
-app.get('/auth/error', (req, res) => {
-    res.send('Unknown Error')
+app.get('/logout', (req, res) => {
+    // req.session = null;
+    req.logout();
+    res.redirect('/');
 })
+
+app.get('/auth/error', (req, res) =>
+    res.send('Unknown Error')
+)
 
 app.get('/auth/github', passport.authenticate('github', { scope: ['user:email'] }));
 
