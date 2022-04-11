@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "cookie-session": "^2.0.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "passport": "^0.5.2",
+    "passport-github2": "^0.1.12"
+  },
+  "name": "cn08-oauth",
+  "description": "",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devstart": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikhilpracto/CN08-Github-OAuth.git"
+  },
+  "author": "nikhil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nikhilpracto/CN08-Github-OAuth/issues"
+  },
+  "homepage": "https://github.com/nikhilpracto/CN08-Github-OAuth#readme"
+}
